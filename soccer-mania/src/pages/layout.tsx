@@ -9,10 +9,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
 const drawerWidth = 240;
 
@@ -57,15 +54,21 @@ export default function PermanentDrawerLeft() {
             </Drawer>
             <Box
                 component="main"
-                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+                sx={{flexGrow: 1, bgcolor: 'background.default', p: 3}}
             >
-                <Toolbar />
+                <Toolbar/>
                 <Typography paragraph>
-                    홈페이지 화면 입니다
+                    김포fc 관리자 페이지 입니다
                 </Typography>
                 <Typography paragraph>
-                   로그인 또는 회원가입을 해주시기 바랍니다
+                    로그인 해주십시오
                 </Typography>
+                <p>login Page</p>
+                <div>
+                    <input type="text"/>
+                    <input type="password"/>
+                    <button>log in</button>
+                </div>
             </Box>
         </Box>
     );
