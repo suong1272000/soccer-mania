@@ -2,6 +2,7 @@ import * as React from "react";
 import { GetServerSideProps } from "next";
 import { parse } from "cookie";
 
+
 export const getServerSideProps: GetServerSideProps = async (
 	context
 ): Promise<any> => {
