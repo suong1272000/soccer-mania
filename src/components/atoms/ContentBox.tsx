@@ -17,12 +17,7 @@ const ContentBox: React.FC<LayoutProps> = ({ children }) => {
 		<>
 			<Box
 				component="main"
-				sx={{
-					flexGrow: 1,
-					bgcolor: "background.default",
-					p: 3,
-					marginTop: "70px",
-				}}
+				sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
 			>
 				<PageStyle>{children}</PageStyle>
 			</Box>

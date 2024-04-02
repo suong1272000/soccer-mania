@@ -10,7 +10,7 @@ const DefaultLayout = ({ children }: LayoutProps) => {
 			<div style={{ display: "flex" }}>
 				<SelectedListItem />
 				<HomeToolbar />
-				<ContentBox>{children}</ContentBox>
+				<ContentBox children={children} />
 			</div>
 		</Registry>
 	);
