@@ -23,7 +23,8 @@ const SelectedListItem = () => {
 					width: "100%",
 					maxWidth: 240,
 					bgcolor: "background.paper",
-					display: "block"
+					display: "block",
+					position: "fixed"
 				}}
 				component="nav"
 				aria-labelledby="nested-list-subheader"

@@ -36,6 +36,8 @@ const AddedButton: React.FC<AddedButtonProps> = ({ onPlayerAdded }) => {
             <TextField name="age" label="나이" onChange={handleChange} value={newPlayer.age || ''} />
             <TextField name="birthday" label="생일" onChange={handleChange} value={newPlayer.birthday || ''} />
             <TextField name="position" label="포지션" onChange={handleChange} value={newPlayer.position || ''} />
+            <TextField name="email" label="이메일" onChange={handleChange} value={newPlayer.email || ''} />
+            <TextField name="phone" label="전화번호" onChange={handleChange} value={newPlayer.phone || ''} />
             <Button variant="outlined" onClick={handleClick}>추가</Button>
         </>
     );

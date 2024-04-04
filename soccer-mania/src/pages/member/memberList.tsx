@@ -76,21 +76,28 @@ const MemberList = () => {
 	};
 
   return (
-	<Box sx={{ height: 400, width: '70%' }}>
+	<Box sx={{ height: 400, width: '100%' }}>
 	<DataGrid
-	  rows={players}
-	  columns={columns}
-	  initialState={{
-		pagination: {
-		  paginationModel: {
-			pageSize: 5,
-		  },
-		},
-	  }}
-	  pageSizeOptions={[5]}
-	  checkboxSelection
-	  disableRowSelectionOnClick
-	/>
+    rows={players}
+    columns={columns}
+    onCellClick={(params) => {
+        const field = params.field;
+        if (field === 'id') {
+            const playerId = params.row.id;
+            window.location.href = `memberList/${playerId}`;
+        }
+    }}
+    initialState={{
+        pagination: {
+            paginationModel: {
+                pageSize: 5,
+            },
+        },
+    }}
+    pageSizeOptions={[5]}
+    checkboxSelection
+    disableRowSelectionOnClick
+/>
 	<Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
 	<AddedButton onPlayerAdded={handlePlayerAdded} />
 	<DeleteButton />
