@@ -66,15 +66,19 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
 		editable: true,
 	  },
   ];
-  const rows = PlayerInfo;
-  
-
+const rows = PlayerInfo;
 
 const MemberList = () => {
+	const [players, setPlayers] = React.useState(PlayerInfo);
+
+	const handlePlayerAdded = (updatedPlayerInfo:any) => {
+		setPlayers(updatedPlayerInfo);
+	};
+
   return (
 	<Box sx={{ height: 400, width: '70%' }}>
 	<DataGrid
-	  rows={rows}
+	  rows={players}
 	  columns={columns}
 	  initialState={{
 		pagination: {
@@ -88,10 +92,9 @@ const MemberList = () => {
 	  disableRowSelectionOnClick
 	/>
 	<Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
-	<AddedButton />
+	<AddedButton onPlayerAdded={handlePlayerAdded} />
 	<DeleteButton />
 	</Box>
-
   </Box>
   );
 };
