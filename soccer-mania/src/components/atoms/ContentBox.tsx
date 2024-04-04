@@ -10,7 +10,7 @@ const ContentBox: React.FC<LayoutProps> = ({ children }) => {
 		width: 100%;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: left;
 		max-height: 584px;
 	`;
 	return (
@@ -22,6 +22,7 @@ const ContentBox: React.FC<LayoutProps> = ({ children }) => {
 					bgcolor: "background.default",
 					p: 3,
 					marginTop: "70px",
+					marginLeft: "260px"
 				}}
 			>
 				<PageStyle>{children}</PageStyle>

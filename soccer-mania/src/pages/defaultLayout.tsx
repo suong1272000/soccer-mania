@@ -1,13 +1,12 @@
 import SelectedListItem from "@/components/atoms/SelectedListItem";
 import Registry from "./registry";
 import HomeToolbar from "@/components/atoms/HomeToolbar";
-import ContentBox from "@/components/atoms/ContentBox";
-import { LayoutProps } from "../../.next/types/app/layout";
+import ContentBox, { LayoutProps } from "@/components/atoms/ContentBox";
 
 const DefaultLayout = ({ children }: LayoutProps) => {
 	return (
 		<Registry>
-			<div style={{ display: "flex" }}>
+			<div style={{ display: "flex", }}>
 				<SelectedListItem />
 				<HomeToolbar />
 				<ContentBox children={children} />
