@@ -1,4 +1,4 @@
-import { userItem, userItemType } from "@/data/user";
+import { PlayerInfo, playerType } from "@/data/player";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { FC } from "react";
@@ -7,23 +7,23 @@ export const getServerSideProps: GetServerSideProps = async (
 	context
 ): Promise<{ props: any }> => {
 	const id = context.params?.id;
-	const item = userItem.find((v) => v.id === id);
+	const item = PlayerInfo.find((v) => v.id === id);
 	return {
-		props: { userItem: item },
+		props: { PlayerInfo: item },
 	};
 };
 
-type UserProps = {
-	userItem: userItemType;
+type PlayerProps = {
+	PlayerInfo: playerType;
 };
 
-const Users: FC<UserProps> = ({ userItem }) => {
+const Player: FC<PlayerProps> = ({ PlayerInfo }) => {
 	const router = useRouter();
 	const { id } = router.query;
 	return (
 		<div>
-			이름: {userItem.name} 이메일:{userItem.email}
+			넘버: {PlayerInfo.jerseyNumber} 이름: {PlayerInfo.name} 나이:{PlayerInfo.age} 생일: {PlayerInfo.birthday} 포지션: {PlayerInfo.position}
 		</div>
 	);
 };
-export default Users;
+export default Player;
