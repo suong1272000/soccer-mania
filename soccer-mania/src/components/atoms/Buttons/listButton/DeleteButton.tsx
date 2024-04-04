@@ -1,10 +1,12 @@
-import { Button } from "@mui/material"
+import React from 'react';
+import Button from '@mui/material/Button';
 
-const DeleteButton = () => {
-    return (
-        <Button variant="outlined" disabled>
-            삭제
-        </Button>
-    );
-}
+const DeleteButton = ({ onClick }:any) => {
+  return (
+    <Button variant="outlined" onClick={onClick}>
+      삭제
+    </Button>
+  );
+};
+
 export default DeleteButton;

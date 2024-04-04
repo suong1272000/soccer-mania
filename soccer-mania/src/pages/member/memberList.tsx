@@ -32,7 +32,7 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
 	{ field: 'id', headerName: 'ID', width: 90 },
 	{
 	  field: 'jerseyNumber',
-	  headerName: '번호',
+	  headerName: '등번호',
 	  type: 'number',
 	  width: 150,
 	  editable: true,
