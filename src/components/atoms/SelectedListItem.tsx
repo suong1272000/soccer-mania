@@ -23,6 +23,8 @@ const SelectedListItem = () => {
 					width: "100%",
 					maxWidth: 240,
 					bgcolor: "background.paper",
+					display: "block",
+					position: "fixed"
 				}}
 				component="nav"
 				aria-labelledby="nested-list-subheader"
@@ -40,7 +42,9 @@ const SelectedListItem = () => {
 					</ListSubheader>
 				}
 			>
-				<ListItemButton>
+				<ListItemButton sx={{
+					width: "240px"
+				}}>
 					<ListItemText
 						primary="로그인"
 						onClick={() => router.push("/login")}
