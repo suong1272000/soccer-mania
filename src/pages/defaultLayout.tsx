@@ -9,14 +9,16 @@ type LayoutProps = {
 };
 
 const DefaultLayout = ({ children }: LayoutProps) => {
-  return (
-    <Registry>
-      <div style={{ display: 'flex' }}>
-        <SelectedListItem />
-        <HomeToolbar />
-        <ContentBox>{children}</ContentBox>
-      </div>
-    </Registry>
-  );
+	return (
+		<Registry>
+			<div style={{ 
+				display: "flex", 
+			}}>
+				<SelectedListItem />
+				<HomeToolbar />
+				<ContentBox children={children} />
+			</div>
+		</Registry>
+	);
 };
 export default DefaultLayout;

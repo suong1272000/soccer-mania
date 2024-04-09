@@ -1,33 +1,25 @@
-import { Box } from '@mui/material';
-import { ReactNode } from 'react';
-import styled from 'styled-components';
+import { Box } from "@mui/material";
+import { ReactNode } from "react";
 
 export type LayoutProps = {
   children: ReactNode;
 };
 const ContentBox: React.FC<LayoutProps> = ({ children }) => {
-  const PageStyle = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    max-height: 584px;
-  `;
-  return (
-    <>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          bgcolor: 'background.default',
-          p: 3,
-          marginTop: '70px',
-          marginLeft: '260px',
-        }}
-      >
-        <PageStyle>{children}</PageStyle>
-      </Box>
-    </>
-  );
+	return (
+		<>
+			<Box
+				component="main"
+				sx={{
+					flexGrow: 1,
+					bgcolor: "background.default",
+					p: 3,
+					margin: " 70px 260px",
+					width: "100%",
+				}}
+			>
+				{children}
+			</Box>
+		</>
+	);
 };
 export default ContentBox;

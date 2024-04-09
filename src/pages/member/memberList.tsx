@@ -8,7 +8,6 @@ import AddedButton from "@/components/atoms/Buttons/listButton/AddedButton";
 import DeleteButton from "@/components/atoms/Buttons/listButton/DeleteButton";
 
 
-
 export const getServerSideProps: GetServerSideProps = async (
 	context
 ): Promise<any> => {
@@ -98,7 +97,7 @@ const MemberList = () => {
     checkboxSelection
     disableRowSelectionOnClick
 />
-	<Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
+	<Box sx={{ width: '70%', display: 'flex', position: 'fixed', minWidth: '601px'}}>
 	<AddedButton onPlayerAdded={handlePlayerAdded} />
 	<DeleteButton />
 	</Box>
