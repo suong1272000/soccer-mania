@@ -12,10 +12,21 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/navigation';
+import { parse } from 'cookie';
 
 export const getServerSideProps: GetServerSideProps = async (
   context
-): Promise<{ props: any }> => {
+): Promise<any> => {
+  const { req } = context;
+  const cookies = req.headers.cookie ? parse(req.headers.cookie) : {};
+  const userAuth = cookies.success == 'true';
+  if (userAuth) {
+    return {
+      redirect: {
+        destination: `/main`,
+      },
+    };
+  }
   return {
     props: {},
   };
@@ -25,33 +36,23 @@ type LoginProps = {
   props: any;
 };
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 const Login: React.FC<LoginProps> = ({ props }) => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
-
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
   const router = useRouter();
-  const UnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
+  const [ID, setID] = React.useState<string>();
+  const [PW, setPW] = React.useState<number | string>();
+  const changeID = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setID(e.target.value);
   };
-  const PwChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
+  const changePW = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPW(e.target.value);
   };
 
-  const check = () => {
-    if (username === 'mega' && password === '123') {
+  const loginBtnAction = () => {
+    if (ID === 'mega' && PW === '123') {
       document.cookie = 'success=true;';
-      router.push('/main');
+      localStorage.setItem('id', ID), router.push('/main');
     } else {
       alert('이메일과 비밀번호를 확인해주세요.');
     }
@@ -75,12 +76,7 @@ const Login: React.FC<LoginProps> = ({ props }) => {
           <Typography component="h1" variant="h5">
             로그인
           </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
+          <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -90,8 +86,8 @@ const Login: React.FC<LoginProps> = ({ props }) => {
               name="email"
               autoComplete="email"
               autoFocus
-              value={username}
-              onChange={UnChange}
+              value={ID}
+              onChange={changeID}
             />
             <TextField
               margin="normal"
@@ -102,8 +98,8 @@ const Login: React.FC<LoginProps> = ({ props }) => {
               type="password"
               id="password"
               autoComplete="current-password"
-              value={password}
-              onChange={PwChange}
+              value={PW}
+              onChange={changePW}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -114,7 +110,7 @@ const Login: React.FC<LoginProps> = ({ props }) => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={check}
+              onClick={loginBtnAction}
             >
               로그인
             </Button>
